@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Card, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
-import img from './7.jpg'
 
 const PersonInfo = ({person}) => {
+    const [imgINFO, setImgINFO] = useState();
+
+    useEffect(() => {
+        fetch(`https://cors-anywhere.herokuapp.com/https://api.smotrim.ru/api/v1/pictures/${person.picId}/bq/redirect`)
+            .then(response => response.blob())
+            .then(res => setImgINFO(URL.createObjectURL(res)));
+    }, [person])
+
     return (
         <Card sx={{ maxWidth: 286, overflow: "visible", height: "380px", borderRadius: "8px"}}>
             <CardMedia
                 sx={{ height: 160, borderTopLeftRadius: "8px", borderTopRightRadius: "8px" }}
-                image={img}
+                image={imgINFO}
             />
             <CardContent sx={{width: "254px", height: "193px", position: "relative", top: "17px", left: "16px", padding: 0}}>
                 <Typography gutterBottom sx={{

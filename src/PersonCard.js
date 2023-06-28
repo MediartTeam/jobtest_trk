@@ -1,15 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, CardContent, Typography} from "@mui/material";
-import img from './7.jpg'
+import {useStore} from "react-redux";
 
 const PersonCard = ({person}) => {
-    // useEffect(async () => {
-    //     fetch(`https://api.smotrim.ru/api/v1/pictures/${person.picId}/bq/redirect`, {
-    //         "referrerPolicy": "same-origin",
-    //         "method": "GET",
-    //         "mode": "no-cors",
-    //     }).then(res => setBlobURL(res));
-    // }, [])
+    const [image, setImage] = useState();
+
+    useEffect(() => {
+        fetch(`https://cors-anywhere.herokuapp.com/https://api.smotrim.ru/api/v1/pictures/${person.picId}/bq/redirect`)
+            .then(response => response.blob())
+            .then(res => setImage(URL.createObjectURL(res)));
+    }, [])
 
     return (
         <Card sx={{boxShadow: "none", overflow: "visible"}}>
@@ -20,7 +20,7 @@ const PersonCard = ({person}) => {
                 display: "flex",
                 flexDirection: "column"
             }}>
-                <img src={img} style={{position: "relative", width: "144px", height: "144px", top: "8px", left: "8px", borderRadius: "162px"}} />
+                <img src={image} style={{position: "relative", width: "144px", height: "144px", top: "8px", left: "8px", borderRadius: "162px"}} />
                 <Typography align="center" sx={{
                     position: "relative",
                     display: "block",

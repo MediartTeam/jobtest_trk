@@ -28,7 +28,7 @@ function App() {
                 <Stack direction="row" flexDirection="row" gap="20px" maxWidth="1536px">
                     {selected > 0 ? <PersonInfo person={persons.content.filter(pers => pers.id === selected)[0]} /> : ""}
                     <Paper sx={{height: "256px", padding: "24px", maxWidth: "100%", overflow: "hidden", borderRadius: 0}}>
-                        <Stack direction="row" sx={{overflow: "hidden"}}>
+                        <Stack direction="row">
                             {data && persons.content !== undefined && persons.content.map(el => (
                                 <div onClick={() => selectPerson(el.id)}>
                                     <PersonCard key={el.id} person={el} />
