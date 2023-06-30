@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, CardContent, Typography} from "@mui/material";
 
+
 const PersonCard = ({person}) => {
     return (
         <Card sx={{boxShadow: "none", overflow: "visible"}}>
