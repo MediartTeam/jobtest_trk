@@ -1,16 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Card, CardContent, Typography} from "@mui/material";
-import {useStore} from "react-redux";
 
 const PersonCard = ({person}) => {
-    const [image, setImage] = useState();
-
-    useEffect(() => {
-        fetch(`https://cors-anywhere.herokuapp.com/https://api.smotrim.ru/api/v1/pictures/${person.picId}/bq/redirect`)
-            .then(response => response.blob())
-            .then(res => setImage(URL.createObjectURL(res)));
-    }, [])
-
     return (
         <Card sx={{boxShadow: "none", overflow: "visible"}}>
             <CardContent sx={{
@@ -20,7 +11,7 @@ const PersonCard = ({person}) => {
                 display: "flex",
                 flexDirection: "column"
             }}>
-                <img src={image} style={{position: "relative", width: "144px", height: "144px", top: "8px", left: "8px", borderRadius: "162px"}} />
+                <img alt="Person image" src={`https://api.smotrim.ru/api/v1/pictures/${person.picId}/bq/redirect`} style={{position: "relative", width: "144px", height: "144px", top: "8px", left: "8px", borderRadius: "162px"}} />
                 <Typography align="center" sx={{
                     position: "relative",
                     display: "block",
