@@ -1,3 +1,6 @@
+# О проекте
+Тестовый проект для smotrim.com в качестве задания при устрйостве на работу.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
